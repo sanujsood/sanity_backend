@@ -14,32 +14,34 @@ const getAuthors = require('./get-all-authors');
        
 // }
 
+// we add all the references of author, language,and verse are added to commentary schema
+
+
 function addAuthorRefToCommentary(chain,commentaries,authorMap,languageMap,verseMap){
 
     commentaries.forEach(commentary=>{
-       chain=chain.patch(commentary._id).unset(['author','language'])
-    })
+       
         // console.log( verseMap.get(parseInt(commentary.verseNumber)));
         // console.log(verseMap.get(commentary.verseNumber));
-    //     chain = chain.patch(commentary._id,p=>p.set({
-    //         author : {
-    //             _ref : authorMap.get(commentary.authorName),
-    //             _type : 'reference',
-    //             _weak:false
-    //         },
-    //         language:{
-    //             _ref:languageMap.get(commentary.lang),
-    //             _type:'reference',
-    //             _weak:false
-    //         },
-    //         verse:{
-    //             _ref: verseMap.get(parseInt(commentary.verseNumber)),
-    //             _type:'reference',
-    //             _weak:false
+        chain = chain.patch(commentary._id,p=>p.set({
+            author : {
+                _ref : authorMap.get(commentary.authorName),
+                _type : 'reference',
+                _weak:false
+            },
+            language:{
+                _ref:languageMap.get(commentary.lang),
+                _type:'reference',
+                _weak:false
+            },
+            verse:{
+                _ref: verseMap.get(parseInt(commentary.verseNumber)),
+                _type:'reference',
+                _weak:false
 
-    //         }
-    //     }))
-    // })
+            }
+        }))
+    })
     return chain;
 }
 

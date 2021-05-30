@@ -15,6 +15,7 @@ import plotSummaries from './plotSummaries'
 import gitaVerse from './gitaVerse'
 import gitaChapter from './gitaChapter'
 import gitaCommentary from './gitaCommentary'
+import gitaTranslation from './gitaTranslation'
 import author from './gitaAuthor'
 import aboutUs from './aboutUs'
 import language from './gitaLanguage'
@@ -39,6 +40,7 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     blockContent,
     gitaCommentary,
+    gitaTranslation,
     author,
     aboutUs,
     language,

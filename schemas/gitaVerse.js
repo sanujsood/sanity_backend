@@ -76,10 +76,21 @@ export default {
       title: "ExternalId",
       type: "number",
     },
-    {
-      name: 'meaning',
-      title: 'Meaning',
-      type: 'string',
+     {
+      name: "translations",
+      title: "Translations",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          weak: true,
+          to: [
+            {
+              type: "gita_translation",
+            },
+          ],
+        },
+      ],
     },
     {
       name: "commentaries",
